@@ -2,5 +2,7 @@ spring:
   application:
     name: Mail
   mail:
+    # Mailserver hostname
     host: localhost
+    # Mailserver port
     port: 1025
