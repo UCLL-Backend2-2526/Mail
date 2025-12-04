@@ -11,8 +11,8 @@
     <groupId>be.ucll.backend2</groupId>
     <artifactId>mail</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>10-Mail</name>
-    <description>10-Mail</description>
+    <name>Mail</name>
+    <description>Mail</description>
     <url/>
     <licenses>
         <license/>
