@@ -2,5 +2,5 @@ services:
   mailhog:
     image: docker.io/axllent/mailpit
     ports:
-      - '1025:1025'
-      - '8025:8025'
+      - '1025:1025' # SMTP, om mails te sturen
+      - '8025:8025' # HTTP, om mails te bekijken
