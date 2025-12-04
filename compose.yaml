@@ -1,5 +1,5 @@
 services:
-  mailhog:
+  mailpit:
     image: docker.io/axllent/mailpit
     ports:
       - '1025:1025' # SMTP, om mails te sturen
