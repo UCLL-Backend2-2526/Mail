@@ -2,6 +2,7 @@ package be.ucll.backend2.mail;
 
 import jakarta.mail.MessagingException;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -26,11 +27,26 @@ public class SendMail implements CommandLineRunner {
 
     private void sendHtmlMail() throws MessagingException {
         final var message = javaMailSender.createMimeMessage();
-        final var helper = new MimeMessageHelper(message, false);
+        final var helper = new MimeMessageHelper(message, true);
         helper.setFrom("admin@example.com");
         helper.setTo("test@example.com");
         helper.setSubject("Test");
-        helper.setText("<html><body><h1>Hello World</h1></body></html>", true);
+        helper.setText(
+                // Plain text
+                "Hello World",
+                // HTML text
+                """
+                  <!DOCTYPE html>
+                  <html>
+                    <body>
+                      <h1>Hello World</h1>
+                    </body>
+                  </html>"""
+        );
+        // Voeg bijlage toe
+        final var image = new ClassPathResource("spring-icon.svg");
+        helper.addAttachment("spring-icon.svg", image);
+        // Verstuur bericht
         javaMailSender.send(message);
     }
 
